@@ -1,0 +1,99 @@
+public interface TicketBookingService {
+	public String bookTicket(TicketDetail ticketDetail);
+	
+	public boolean validateLimitForTkts(int showId);
+	
+	public ArrayList<UserDetails> getUserDetails();
+	
+	public ArrayList<CollectionServie> getCollectionDetails();
+	
+	public ArrayList<showDtl> fetchShowDetails();
+}
+
+Class TicketBookingServiceImpl
+{
+	public boolean bookTicket(TicketDetail ticketDetail)
+	{
+		showId = ticketDetail.getShowId();
+		boolean flag = validateLimitForTkts(showId);
+		if(flag)
+			print("Tickets booked");
+		else
+			print("Ticket not booked");
+		return flag
+	}
+	
+	public boolean validateLimitForTkts(int showId);
+	{
+		ShowDetails showDtl= getShowDetails(showId); //fetching details from database
+		if(showDtl.getNosOfTktsBooked < maxTkts && sd.getShowStatus = ShowStatus.HELD)
+			flag = true;
+		else
+			flag = false;
+		return flag
+	}
+	
+	public boolean fetchShowDetails();
+	{
+		ArrayList<ShowDetails> showDtlLst= fetchShowDetails(); //fetching details from database
+		for(ShowDetails sd in showDtlLst)
+		{
+			if(sd.getNosOfTktsBooked < minTickets)
+			sd.setShowStatus = ShowStatus.CANCEL
+		}
+		return flag
+	}
+	
+	public ArrayList<UserDetails> getUserDetails()
+	{
+		ArrayList<UserDetails> = getUserDetails(); //from database
+	}
+	
+	public ArrayList<CollectionServie> getCollectionDetails()
+	{
+		ArrayList<CollectionServie> = getCollectionDetails(); //from database
+	}
+}
+
+Class TicketDetail
+{
+	int ticketId
+	Date bookingDate = sysdate
+	int showId
+	List<UserDetail> usrLst
+	int ticketPrice
+	//getter setter of all variables
+}
+
+Class UserDetail
+{
+	String userName
+	String usrGender
+	String usrContactNo
+	UserType usrType
+	//getter setter of all variables
+}
+
+Class ShowDetail
+{
+	int showId;
+	String showName;
+	int showPrice;
+	int nosOfTktsBooked;
+	ShowStatus showStatus;
+	//getter setter of all variables
+}
+
+public enum UserType {
+    CUSTOMER,
+    ADMIN;
+}
+public enum ShowType {
+    DRAMA,
+    ACTION,
+	THRILLER;
+}
+public enum ShowStatus {
+    HELD,
+    CANCEL;
+}

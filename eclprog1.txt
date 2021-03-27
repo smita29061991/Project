@@ -12,6 +12,7 @@ public interface TicketBookingService {
 
 Class TicketBookingServiceImpl
 {
+	final minTkts = 10, maxTkts = 30
 	public boolean bookTicket(TicketDetail ticketDetail)
 	{
 		showId = ticketDetail.getShowId();
@@ -26,22 +27,17 @@ Class TicketBookingServiceImpl
 	public boolean validateLimitForTkts(int showId);
 	{
 		ShowDetails showDtl= getShowDetails(showId); //fetching details from database
-		if(showDtl.getNosOfTktsBooked < maxTkts && sd.getShowStatus = ShowStatus.HELD)
+		int nosOfTickets = nosOftcktsToBook + sd.getNosOfTktsBooked
+		if(nosOfTickets > minTkts && nosOfTickets < maxTkts)
 			flag = true;
 		else
 			flag = false;
 		return flag
 	}
 	
-	public boolean fetchShowDetails();
+	public ArrayList<ShowDetails> fetchShowDetails(int nosOftcktsToBook);
 	{
 		ArrayList<ShowDetails> showDtlLst= fetchShowDetails(); //fetching details from database
-		for(ShowDetails sd in showDtlLst)
-		{
-			if(sd.getNosOfTktsBooked < minTickets)
-			sd.setShowStatus = ShowStatus.CANCEL
-		}
-		return flag
 	}
 	
 	public ArrayList<UserDetails> getUserDetails()
@@ -80,7 +76,6 @@ Class ShowDetail
 	String showName;
 	int showPrice;
 	int nosOfTktsBooked;
-	ShowStatus showStatus;
 	//getter setter of all variables
 }
 
@@ -92,8 +87,4 @@ public enum ShowType {
     DRAMA,
     ACTION,
 	THRILLER;
-}
-public enum ShowStatus {
-    HELD,
-    CANCEL;
 }

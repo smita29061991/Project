@@ -10,7 +10,7 @@ public interface TicketBookingService {
 	public ArrayList<showDtl> fetchShowDetails();
 }
 
-Class TicketBookingServiceImpl
+Class TicketBookingServiceImpl implements TicketBookingService
 {
 	final minTkts = 10, maxTkts = 30
 	public boolean bookTicket(TicketDetail ticketDetail)
@@ -76,6 +76,17 @@ Class ShowDetail
 	String showName;
 	int showPrice;
 	int nosOfTktsBooked;
+	//getter setter of all variables
+}
+
+Class CollectionDetail
+{
+	Date bookingDate = sysdate
+	int showId
+	int totalTicketsbooked
+	Date showDate
+	int totalCollection
+	
 	//getter setter of all variables
 }
 
